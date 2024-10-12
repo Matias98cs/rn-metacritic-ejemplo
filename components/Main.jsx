@@ -13,12 +13,13 @@ import {
   ActivityIndicator,
   FlatList,
 } from "react-native";
-
+import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { getLatestGames } from "../lib/metacritic";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import GameCard, { AnimatedGameCard } from "./GameCard";
 import { Logo } from "./Logo";
+import { CircleInfoIcon } from "./Icons";
 
 export default function Main() {
   const [games, setGames] = useState([]);
@@ -43,6 +44,11 @@ export default function Main() {
       >
         <Logo />
       </View>
+      <Link asChild href="/about">
+        <Pressable>
+          <CircleInfoIcon />
+        </Pressable>
+      </Link>
       {games.length === 0 ? (
         <ActivityIndicator size="large" color="#fff" />
       ) : (

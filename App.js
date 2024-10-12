@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
   },
 });
