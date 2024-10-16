@@ -13,25 +13,31 @@ import {
 } from "react-native";
 import React, { useEffect, useRef } from "react";
 import Score from "./Score";
+import { Link } from "expo-router";
+
+import { styled } from "nativewind";
+
+const StyledPressable = styled(Pressable);
 
 export default function GameCard({ game }) {
   return (
-    <View
-      className="flex-row bg-slate-500/10 p-4 rounded-xl gap-4 mb-10"
-      key={game.slug}
-    >
-      <Image source={{ uri: game.image }} style={styles.image} />
-      <View className="">
-        <Text className="mb-1" style={styles.title}>
-          {game.title}
-        </Text>
-        {/* <Text style={styles.score}>{game.score}</Text> */}
-        <Score score={game.score} maxScore={100} />
-        <Text className="mt-2 flex-shrink" style={styles.description}>
-          {game.description.slice(0, 100)}
-        </Text>
-      </View>
-    </View>
+    // ruta link dinamica
+    <Link href={`/${game.slug}`} asChild>
+      <StyledPressable className="active:opacity-70 border-black active:border-white/50 mb-2 bg-gray-500/10 rounded-xl p-4">
+        <View className="flex-row gap-4" key={game.slug}>
+          <Image source={{ uri: game.image }} style={styles.image} />
+          <View className="flex-shrink">
+            <Text className="mb-1" style={styles.title}>
+              {game.title}
+            </Text>
+            <Score score={game.score} maxScore={100} />
+            <Text className="mt-2 flex-shrink" style={styles.description}>
+              {game.description.slice(0, 100)}
+            </Text>
+          </View>
+        </View>
+      </StyledPressable>
+    </Link>
   );
 }
 

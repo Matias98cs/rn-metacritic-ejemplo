@@ -18,8 +18,7 @@ import { useEffect, useState } from "react";
 import { getLatestGames } from "../lib/metacritic";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import GameCard, { AnimatedGameCard } from "./GameCard";
-import { Logo } from "./Logo";
-import { CircleInfoIcon } from "./Icons";
+import { Screen } from "./Screen";
 
 export default function Main() {
   const [games, setGames] = useState([]);
@@ -36,19 +35,7 @@ export default function Main() {
   }, []);
 
   return (
-    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View
-        style={{
-          marginBottom: 20,
-        }}
-      >
-        <Logo />
-      </View>
-      <Link asChild href="/about">
-        <Pressable>
-          <CircleInfoIcon />
-        </Pressable>
-      </Link>
+    <Screen>
       {games.length === 0 ? (
         <ActivityIndicator size="large" color="#fff" />
       ) : (
@@ -60,7 +47,7 @@ export default function Main() {
           )}
         />
       )}
-    </View>
+    </Screen>
   );
 }
 
