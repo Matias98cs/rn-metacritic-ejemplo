@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, ScrollView, Pressable } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
-import { HomeIcon } from "../components/Icons";
-import { Screen } from "../components/Screen";
+import { HomeIcon } from "../../components/Icons";
+import { Screen } from "../../components/Screen";
 import { styled } from "nativewind";
 
 const StyledPressable = styled(Pressable);
